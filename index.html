@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS3 Transitions and Animations with JavaScript</title>
+  <style>
+    /* CSS3 Transitions */
+    .hover-button {
+      background-color: #3498db;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.3s;
+    }
+
+    .hover-button:hover {
+      background-color: #2ecc71;
+      transform: scale(1.1);
+    }
+
+    /* CSS Animations */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes slideIn {
+      from {
+        transform: translateX(-100%);
+      }
+      to {
+        transform: translateX(0);
+      }
+    }
+
+    .animated-banner {
+      width: 100%;
+      background-color: #f39c12;
+      padding: 20px;
+      color: white;
+      text-align: center;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    .sliding-card {
+      width: 200px;
+      height: 200px;
+      background-color: #e74c3c;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 20px;
+      animation: slideIn 1s ease-out;
+    }
+
+    /* Hidden class */
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <button class="hover-button">Hover Over Me</button>
+
+  <div class="animated-banner">
+    This banner fades in on load!
+  </div>
+
+  <div class="sliding-card">
+    Click the button below to animate me!
+  </div>
+
+  <button onclick="toggleCardAnimation()">Animate Card</button>
+
+  <!-- Modal Section -->
+  <div id="modal" class="hidden">
+    <div class="modal-content">
+      <p>This is a modal. Click below to close it.</p>
+      <button onclick="toggleModal()">Close Modal</button>
+    </div>
+  </div>
+  
+  <button onclick="toggleModal()">Show Modal</button>
+
+  <script>
+    // Part 2: JavaScript Functions
+
+    // Function 1: Calculate area of rectangle (parameters and return values)
+    function calculateArea(length, width) {
+      return length * width;
+    }
+
+    // Function 2: Demonstrating scope (local vs. global variables)
+    let globalVar = "I'm a global variable!";
+
+    function demonstrateScope() {
+      let localVar = "I'm a local variable!";
+      console.log(globalVar);
+      console.log(localVar);
+    }
+
+    // Function 3: Toggle the hidden class for modal (scope and CSS manipulation)
+    function toggleModal() {
+      const modal = document.getElementById("modal");
+      modal.classList.toggle("hidden");
+    }
+
+    // Part 3: Combining CSS Animations with JavaScript
+
+    // Trigger animation on card click
+    function toggleCardAnimation() {
+      const card = document.querySelector(".sliding-card");
+      // Reset the animation by removing and adding the class
+      card.classList.remove("sliding-card");
+      void card.offsetWidth;
+      card.classList.add("sliding-card");
+    }
+
+    // Example of calculateArea usage
+    console.log(calculateArea(5, 10));
+
+    demonstrateScope();
+  </script>
+
+</body>
+</html>
